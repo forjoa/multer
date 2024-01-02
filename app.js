@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
         cb(null, 'uploads/')
     },
     filename: (req, file, cb) => {
-        cb(null, file.filename+'')
+        cb(null, file.originalname+'')
     }
 })
 
@@ -21,6 +21,7 @@ const upload = multer({ storage: storage })
 // In 'upload.single()' we have to write the NAME of the image input
 app.post('/upload', upload.single('image'), async (req, res) => {
     try {
+        console.log(req.file)
         res.json({ message: 'image uploaded succesfully' })
     } catch (err) {
         res.status(500).json({ message: err })
