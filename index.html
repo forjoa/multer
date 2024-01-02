@@ -31,7 +31,6 @@
 
             const formData = new FormData();
             const imageInput = document.getElementById('image');
-            console.log(imageInput.files[0])
             formData.append('image', imageInput.files[0]);
 
             fetch('http://localhost:3000/upload', {
